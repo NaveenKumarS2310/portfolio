@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Portfolio</title>
+  <meta name="description" content="A clean, responsive GitHub portfolio template you can deploy to GitHub Pages in minutes." />
+  <meta property="og:title" content="Developer Portfolio" />
+  <meta property="og:description" content="A clean, responsive GitHub portfolio template you can deploy to GitHub Pages in minutes." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Helvetica Neue", "Arial"],
+          },
+          boxShadow: {
+            soft: "0 10px 30px -12px rgba(2,132,199,0.25)",
+          },
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* Smooth card hover */
+    .lift { transition: transform .2s ease, box-shadow .2s ease; }
+    .lift:hover { transform: translateY(-4px); box-shadow: 0 14px 30px -12px rgba(0,0,0,.25); }
+    /* Gradient text */
+    .gradient-text { background: linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+  <!-- Config: set your GitHub username & optional pinned repos -->
+  <script>
+    const GITHUB_USERNAME = 'your-github-username'; // ← change this
+    const PINNED = [
+      // Optional: add exact repo names you want pinned on top (e.g., 'awesome-project')
+      // 'awesome-project', 'another-repo'
+    ];
+  </script>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-900/70 border-b border-slate-200/60 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="font-semibold tracking-tight gradient-text">&lt;/&gt; Portfolio</a>
+      <nav class="flex items-center gap-3">
+        <a href="#projects" class="px-3 py-1.5 text-sm rounded hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
+        <a href="#about" class="px-3 py-1.5 text-sm rounded hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+        <a href="#contact" class="px-3 py-1.5 text-sm rounded hover:bg-slate-100 dark:hover:bg-slate-800">Contact</a>
+        <button id="themeToggle" class="ml-2 px-3 py-1.5 text-sm rounded hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 opacity-30 dark:opacity-20" aria-hidden="true">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320"><path fill="#38bdf8" d="M0,224L80,229.3C160,235,320,245,480,250.7C640,256,800,256,960,224C1120,192,1280,128,1360,96L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 py-16 md:py-24">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-slate-500 dark:text-slate-400 mb-2">Hi, I'm</p>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+            <span class="gradient-text">Your Name</span>
+          </h1>
+          <p class="text-lg text-slate-600 dark:text-slate-300 mb-6">Laravel developer with 4+ years of experience building scalable APIs, real-time dashboards, and delightful user experiences.</p>
+          <div class="flex flex-wrap items-center gap-3">
+            <a id="ghLink" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-500 text-white hover:bg-sky-600 shadow-soft lift">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="#projects" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-slate-800 hover:bg-slate-100 border border-slate-200 dark:bg-slate-800 dark:text-slate-100 dark:border-slate-700 lift">
+              <i class="fa-solid fa-code"></i> View Projects
+            </a>
+            <a id="resumeLink" href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-slate-800 hover:bg-slate-100 border border-slate-200 dark:bg-slate-800 dark:text-slate-100 dark:border-slate-700 lift">
+              <i class="fa-regular fa-file-lines"></i> Download Resume
+            </a>
+          </div>
+        </div>
+        <div class="justify-self-center">
+          <div class="relative w-48 h-48 md:w-64 md:h-64 rounded-3xl bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-500 p-[3px] lift">
+            <div class="w-full h-full rounded-3xl bg-white dark:bg-slate-900 grid place-items-center">
+              <i class="fa-solid fa-user text-6xl text-sky-500"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="max-w-6xl mx-auto px-4 pb-4 -mt-10 md:-mt-14">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="rounded-2xl p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center lift">
+        <div class="text-3xl font-bold" id="statRepos">--</div>
+        <div class="text-slate-500 text-sm">Public Repos</div>
+      </div>
+      <div class="rounded-2xl p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center lift">
+        <div class="text-3xl font-bold" id="statFollowers">--</div>
+        <div class="text-slate-500 text-sm">Followers</div>
+      </div>
+      <div class="rounded-2xl p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center lift">
+        <div class="text-3xl font-bold" id="statYears">4+</div>
+        <div class="text-slate-500 text-sm">Years Experience</div>
+      </div>
+      <div class="rounded-2xl p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center lift">
+        <div class="text-3xl font-bold" id="statLang">PHP</div>
+        <div class="text-slate-500 text-sm">Primary Stack</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="max-w-6xl mx-auto px-4 py-16">
+    <div class="flex items-end justify-between mb-6">
+      <h2 class="text-2xl md:text-3xl font-bold">Projects</h2>
+      <a id="viewAllRepos" target="_blank" class="text-sky-600 hover:underline">View all repos →</a>
+    </div>
+    <div id="projectsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="bg-white dark:bg-slate-800 border-y border-slate-200 dark:border-slate-700">
+    <div class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-3 gap-8">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3">About</h2>
+        <p class="text-slate-600 dark:text-slate-300">I’m a Laravel developer focused on clean architecture, testing, and performance. I love Vue on the frontend, and tools like Vite, Tailwind, and Inertia. I’m currently exploring domain-driven design and event sourcing.</p>
+      </div>
+      <div class="md:col-span-2 grid sm:grid-cols-2 gap-6">
+        <div class="rounded-2xl p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <h3 class="font-semibold mb-2">Skills</h3>
+          <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-1">
+            <li>Laravel, PHP 8.x, Livewire, Queues</li>
+            <li>Vue 3, Pinia, Vite</li>
+            <li>MySQL, Redis, Docker</li>
+            <li>Testing (Pest/PHPUnit)</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <h3 class="font-semibold mb-2">Highlights</h3>
+          <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-1">
+            <li>Cut API latency by 45% with caching & tuning</li>
+            <li>Built feedback analytics module w/ sentiment</li>
+            <li>Designed modular, reusable UI components</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="max-w-3xl mx-auto px-4 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">Get in touch</h2>
+    <form action="https://formspree.io/f/your-form-id" method="POST" class="grid gap-4">
+      <div class="grid md:grid-cols-2 gap-4">
+        <input class="rounded-xl border border-slate-300 px-4 py-3 bg-white dark:bg-slate-900 dark:border-slate-700" placeholder="Your name" name="name" required>
+        <input type="email" class="rounded-xl border border-slate-300 px-4 py-3 bg-white dark:bg-slate-900 dark:border-slate-700" placeholder="Email address" name="email" required>
+      </div>
+      <textarea class="rounded-xl border border-slate-300 px-4 py-3 bg-white dark:bg-slate-900 dark:border-slate-700" rows="5" placeholder="Message" name="message" required></textarea>
+      <button class="justify-self-start inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-sky-500 text-white hover:bg-sky-600 shadow-soft lift">
+        <i class="fa-regular fa-paper-plane"></i> Send Message
+      </button>
+      <p class="text-sm text-slate-500">This form uses Formspree. Replace <code>your-form-id</code> above with your own or wire this to your Laravel backend.</p>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-8">
+    <div class="max-w-6xl mx-auto px-4 text-sm text-slate-500 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© <span id="year"></span> Your Name. Built with Tailwind CSS. Hosted on GitHub Pages.</p>
+      <div class="flex items-center gap-4">
+        <a id="footerGh" class="hover:text-slate-700 dark:hover:text-slate-300" target="_blank"><i class="fa-brands fa-github text-lg"></i></a>
+        <a href="mailto:you@example.com" class="hover:text-slate-700 dark:hover:text-slate-300"><i class="fa-regular fa-envelope text-lg"></i></a>
+        <a href="#" class="hover:text-slate-700 dark:hover:text-slate-300"><i class="fa-brands fa-linkedin text-lg"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Portfolio Logic -->
+  <script>
+    // Dark mode toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') root.classList.add('dark');
+    themeToggle?.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Footer year & links
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const ghBase = `https://github.com/${GITHUB_USERNAME}`;
+    document.getElementById('ghLink').href = ghBase;
+    document.getElementById('footerGh').href = ghBase;
+    document.getElementById('viewAllRepos').href = `${ghBase}?tab=repositories`;
+
+    // Optional: set resume link to a PDF in your repo root (e.g., resume.pdf)
+    const resume = 'resume.pdf'; // put a real file in your repo
+    const resumeEl = document.getElementById('resumeLink');
+    if (resumeEl && resume) resumeEl.href = `${ghBase}/${resume}`;
+
+    // Fetch GitHub profile + repos
+    async function fetchJSON(url) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('GitHub API error');
+      return res.json();
+    }
+
+    function repoCard(repo) {
+      const topics = (repo.topics || []).slice(0, 4).map(t => `<span class=\"px-2 py-1 rounded-full text-xs bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700\">${t}</span>`).join('');
+      return `
+        <a class=\"block rounded-2xl p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 lift\" href=\"${repo.html_url}\" target=\"_blank\" rel=\"noopener\">
+          <div class=\"flex items-start justify-between\">
+            <h3 class=\"font-semibold text-lg\">${repo.name}</h3>
+            <span class=\"text-xs px-2 py-1 rounded-full border border-slate-200 dark:border-slate-700\">${repo.private ? 'Private' : 'Public'}</span>
+          </div>
+          <p class=\"mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-3\">${repo.description ?? 'No description provided.'}</p>
+          <div class=\"mt-4 flex flex-wrap items-center gap-2\">${topics}</div>
+          <div class=\"mt-4 flex items-center gap-4 text-sm text-slate-500\">
+            <span title=\"Stars\"><i class=\"fa-regular fa-star\"></i> ${repo.stargazers_count}</span>
+            <span title=\"Forks\"><i class=\"fa-solid fa-code-fork\"></i> ${repo.forks_count}</span>
+            ${repo.language ? `<span title=\"Language\"><i class=\"fa-solid fa-circle\"></i> ${repo.language}</span>` : ''}
+            <span class=\"ml-auto\" title=\"Updated\">Updated ${new Date(repo.updated_at).toLocaleDateString()}</span>
+          </div>
+        </a>`;
+    }
+
+    async function loadPortfolio() {
+      try {
+        // Profile
+        const user = await fetchJSON(`https://api.github.com/users/${GITHUB_USERNAME}`);
+        document.getElementById('statRepos').textContent = user.public_repos;
+        document.getElementById('statFollowers').textContent = user.followers;
+
+        // Repos (most recently updated)
+        const repos = await fetchJSON(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`);
+
+        // Put pinned repos first if specified
+        let ordered = [...repos];
+        if (PINNED.length) {
+          const map = new Map(repos.map(r => [r.name, r]));
+          const pinned = PINNED.map(name => map.get(name)).filter(Boolean);
+          const rest = repos.filter(r => !PINNED.includes(r.name));
+          ordered = [...pinned, ...rest];
+        }
+
+        // Filter out forks if you want
+        ordered = ordered.filter(r => !r.fork);
+
+        // Render top 6
+        const grid = document.getElementById('projectsGrid');
+        grid.innerHTML = ordered.slice(0, 6).map(repoCard).join('');
+      } catch (e) {
+        console.error(e);
+        document.getElementById('projectsGrid').innerHTML = `<div class='text-slate-500'>Unable to load repositories. Check your username or API rate limits.</div>`;
+      }
+    }
+
+    loadPortfolio();
+  </script>
+</body>
+</html>
