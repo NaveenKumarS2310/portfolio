@@ -311,23 +311,27 @@
   // }
   // loadGitHub();
 
-  // List of repos you want to show (even if you are not the owner)
+ // List of repos you want to show with custom display names
 const myRepos = [
-  { owner: "unluckynaveen", repo: "portfolio" },
-  { owner: "otherdev123", repo: "awesome-laravel-api" },
-  { owner: "companyXYZ", repo: "internal-dashboard" }
+  { owner: "NaveenKumarS2310", repo: "laravel-vue-inertia", displayName: "Laravel Vue Inertia Project" },
+  { owner: "PurpleNaveen23", repo: "DemoimeetUX710xcz", displayName: "imeetify.com for global" },
+  { owner: "Naveen231099", repo: "TASHAFA", displayName: "tashafa" },
+  { owner: "imeetify", repo: "feedback", displayName: "Therapora sentiment based feedbacks" },
+  { owner: "imeetify", repo: "canada", displayName: "imeetify.ca for canada" },
 ];
 
 // Fetch details for each repo
 async function loadSelectedRepos() {
   try {
-    const repoPromises = myRepos.map(r => 
+    const repoPromises = myRepos.map(r =>
       fetch(`https://api.github.com/repos/${r.owner}/${r.repo}`).then(res => res.json())
     );
 
     const repos = await Promise.all(repoPromises);
 
-    document.getElementById('projectsGrid').innerHTML = repos.map(repoCard).join('');
+    document.getElementById('projectsGrid').innerHTML = repos.map((repo, index) => 
+      repoCard(repo, myRepos[index].displayName)
+    ).join('');
   } catch (e) {
     console.error(e);
     document.getElementById('projectsGrid').innerHTML =
@@ -337,17 +341,20 @@ async function loadSelectedRepos() {
   }
 }
 
-function repoCard(repo) {
+function repoCard(repo, customName) {
   return `
     <div class="rounded-2xl p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-      <h3 class="text-lg font-bold">${repo.name}</h3>
+      <h3 class="text-lg font-bold">${customName}</h3>
       <p class="text-sm text-gray-600 dark:text-gray-400">${repo.description || "No description"}</p>
-      <a href="${repo.html_url}" target="_blank" class="text-blue-500 hover:underline">View on GitHub</a>
+      <a href="${repo.html_url}" target="_blank" class="text-blue-500 hover:underline">
+        View on GitHub
+      </a>
     </div>
   `;
 }
 
 loadSelectedRepos();
+
 </script>
 </body>
 </html>
