@@ -126,6 +126,13 @@
   </div>
   <div id="projectsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <!-- Filled by JS -->
+
+    <div class="project-card">
+  <h3>iMeetify</h3>
+  <p>Contributed to meeting scheduling & Zoom API integration.</p>
+  <a href="https://github.com/PurpleNaveen23/DemoimeetUX710xcz" target="_blank" class="btn">View Repo</a>
+</div>
+
   </div>
 
   <!-- Featured (from resume) -->
@@ -287,21 +294,21 @@
       </a>`;
   }
 
-  async function loadGitHub(){
-    try{
-      const user = await fetchJSON(`https://api.github.com/users/${GITHUB_USERNAME}`);
-      document.getElementById('statRepos').textContent = user.public_repos;
-      document.getElementById('statFollowers').textContent = user.followers;
+  // async function loadGitHub(){
+  //   try{
+  //     const user = await fetchJSON(`https://api.github.com/users/${GITHUB_USERNAME}`);
+  //     document.getElementById('statRepos').textContent = user.public_repos;
+  //     document.getElementById('statFollowers').textContent = user.followers;
 
-      let repos = await fetchJSON(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`);
-      repos = repos.filter(r => !r.fork); // hide forks
-      document.getElementById('projectsGrid').innerHTML = repos.slice(0,6).map(repoCard).join('');
-    }catch(e){
-      console.error(e);
-      document.getElementById('projectsGrid').innerHTML =
-        `<div class="rounded-2xl p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">Unable to load repositories. Check username or API limits.</div>`;
-    }
-  }
+  //     let repos = await fetchJSON(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`);
+  //     repos = repos.filter(r => !r.fork); // hide forks
+  //     document.getElementById('projectsGrid').innerHTML = repos.slice(0,6).map(repoCard).join('');
+  //   }catch(e){
+  //     console.error(e);
+  //     document.getElementById('projectsGrid').innerHTML =
+  //       `<div class="rounded-2xl p-5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">Unable to load repositories. Check username or API limits.</div>`;
+  //   }
+  // }
   loadGitHub();
 </script>
 </body>
